@@ -5,3 +5,6 @@
 .DS_Store
 /build
 /captures
+
+# specific files
+app/src/main/res/values/key.xml
