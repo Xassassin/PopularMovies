@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.gknayzeh.popularmovies.app.data.MovieData;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

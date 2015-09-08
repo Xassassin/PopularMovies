@@ -1,4 +1,4 @@
-package com.gknayzeh.popularmovies.app;
+package com.gknayzeh.popularmovies.app.data;
 
 import org.json.JSONException;
 import org.json.JSONObject;
