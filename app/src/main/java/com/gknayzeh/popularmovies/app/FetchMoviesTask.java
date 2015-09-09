@@ -31,9 +31,8 @@ public class FetchMoviesTask extends AsyncTask<String, Void, Void> {
     private final Context mContext;
 //    private final PosterViewAdapter mPosterViewAdapter;
 
-    public FetchMoviesTask(Context context, PosterViewAdapter posterViewAdapter) {
+    public FetchMoviesTask(Context context) {
         mContext = context;
-//        mPosterViewAdapter = posterViewAdapter;
 
     }
 

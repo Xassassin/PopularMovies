@@ -36,10 +36,9 @@ public class DetailsActivityFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_details, container, false);
         Intent intent = getActivity().getIntent();
-        if (intent != null && intent.hasExtra(Intent.EXTRA_TEXT)) {
-            mMovieString = intent.getStringExtra(Intent.EXTRA_TEXT);
-            ((TextView) rootView.findViewById(R.id.detail_text))
-                    .setText(mMovieString);
+        if (intent != null) {
+            mMovieString = intent.getDataString();
+            ((TextView) rootView.findViewById(R.id.detail_text)).setText(mMovieString);
         }
         return rootView;
     }
@@ -52,7 +51,7 @@ public class DetailsActivityFragment extends Fragment {
 
         ShareActionProvider mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
 
-        if (mShareActionProvider != null ) {
+        if (mShareActionProvider != null) {
             mShareActionProvider.setShareIntent(createShareMovieDetailsIntent());
         } else {
             Log.d(LOG_TAG, "Share Action Provider is null?");

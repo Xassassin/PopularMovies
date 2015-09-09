@@ -57,6 +57,10 @@ public class MovieContract {
             return CONTENT_URI.buildUpon().appendPath(sortBy).build();
         }
 
+        public static Uri buildMoviesSortByAndOrder(String sortBy, int order) {
+            return CONTENT_URI.buildUpon().appendPath(sortBy).appendPath(Integer.toString(order)).build();
+        }
+
         public static String getSortByFromUri(Uri uri) {
             return uri.getPathSegments().get(1);
         }

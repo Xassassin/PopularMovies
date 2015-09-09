@@ -6,15 +6,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.gknayzeh.popularmovies.app.data.MovieData;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class MainActivity extends ActionBarActivity {
-
-    public static List<MovieData> mMovieDatas = new ArrayList<MovieData>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
