@@ -38,6 +38,10 @@ public class MovieDBHelper extends SQLiteOpenHelper {
 
         SQL_CREATE_MOVIE_TABLE.append(MovieEntry.COL_RELEASE_DATE).append(" TEXT NOT NULL,");
 
+        SQL_CREATE_MOVIE_TABLE.append(MovieEntry.COL_SORT_BY).append(" TEXT NOT NULL,");
+
+        SQL_CREATE_MOVIE_TABLE.append(MovieEntry.COL_SORT_ORDER).append(" INTEGER NOT NULL");
+
         SQL_CREATE_MOVIE_TABLE.append(");");
 
         db.execSQL(SQL_CREATE_MOVIE_TABLE.toString());
