@@ -11,7 +11,7 @@ import com.gknayzeh.popularmovies.app.data.MovieContract.MovieEntry;
  */
 public class MovieDBHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     static final String DATABASE_NAME = "movie.db";
 
@@ -40,7 +40,9 @@ public class MovieDBHelper extends SQLiteOpenHelper {
 
         SQL_CREATE_MOVIE_TABLE.append(MovieEntry.COL_SORT_BY).append(" TEXT NOT NULL,");
 
-        SQL_CREATE_MOVIE_TABLE.append(MovieEntry.COL_SORT_ORDER).append(" INTEGER NOT NULL");
+        SQL_CREATE_MOVIE_TABLE.append(MovieEntry.COL_SORT_ORDER).append(" INTEGER NOT NULL,");
+
+        SQL_CREATE_MOVIE_TABLE.append(" UNIQUE (").append(MovieEntry.COL_SORT_BY).append(",").append(MovieEntry.COL_SORT_ORDER).append(") ON CONFLICT REPLACE");
 
         SQL_CREATE_MOVIE_TABLE.append(");");
 

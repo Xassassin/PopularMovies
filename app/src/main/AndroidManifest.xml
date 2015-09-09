@@ -35,6 +35,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gknayzeh.popularmovies.app.MainActivity" />
         </activity>
+        <provider
+            android:authorities="com.gknayzeh.popularmovies.app"
+            android:name=".data.MovieProvider" />
     </application>
 
 </manifest>
