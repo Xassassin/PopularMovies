@@ -121,16 +121,15 @@ public class MoviesFragment extends Fragment implements LoaderManager.LoaderCall
         super.onActivityCreated(savedInstanceState);
     }
 
+    void onSortByChanged( ) {
+        updateMovies();
+        getLoaderManager().restartLoader(MOVIES_LOADER, null, this);
+    }
+
     private void updateMovies() {
         FetchMoviesTask task = new FetchMoviesTask(getActivity());
         String sortOrder = Utility.getPreferredSortBy(getActivity());
         task.execute(sortOrder);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        updateMovies();
     }
 
     @Override
