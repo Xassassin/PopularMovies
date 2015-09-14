@@ -23,25 +23,6 @@ public class PosterViewAdapter extends CursorAdapter {
         super(context, c, flags);
     }
 
-//    @Override
-//    public int getCount() {
-//        if (MainActivity.mMovieDatas != null) {
-//            return MainActivity.mMovieDatas.size();
-//        } else {
-//            return 0;
-//        }
-//    }
-//
-//    @Override
-//    public Object getItem(int position) {
-//        return MainActivity.mMovieDatas.get(position);
-//    }
-//
-//    @Override
-//    public long getItemId(int position) {
-//        return 0;
-//    }
-
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         return LayoutInflater.from(context).inflate(R.layout.list_item_movie, parent, false);
