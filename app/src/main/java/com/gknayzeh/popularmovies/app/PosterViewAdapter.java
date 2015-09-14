@@ -44,15 +44,7 @@ public class PosterViewAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        ImageView imageView = (ImageView) LayoutInflater.from(context).inflate(R.layout.list_item_movie, parent, false);
-
-        // if it's not recycled, initialize some attributes
-//            imageView = new ImageView(mContext);
-//            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-        imageView.setAdjustViewBounds(true);
-        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-//            imageView.setPadding(0, 0, 0, 0);
-        return imageView;
+        return LayoutInflater.from(context).inflate(R.layout.list_item_movie, parent, false);
     }
 
     @Override
