@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/list_item_movie_textview"
+    android:id="@+id/list_item_movie_imageview"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:maxHeight="300dp"
-    android:paddingBottom="1dp">
+    android:layout_height="278dp"
+    android:maxWidth="185dp"
+    android:maxHeight="278dp"
+    android:minHeight="278dp"
+    android:minWidth="185dp"
+    android:scaleType="centerCrop">
 
 </ImageView>
