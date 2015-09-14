@@ -2,6 +2,7 @@ package com.gknayzeh.popularmovies.app;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -16,9 +17,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gknayzeh.popularmovies.app.data.MovieContract;
+import com.squareup.picasso.Picasso;
 
 
 /**
@@ -63,6 +66,13 @@ public class DetailsActivityFragment extends Fragment implements LoaderManager.L
     static final int COL_SORT_BY = 7;
     static final int COL_SORT_ORDER = 8;
 
+    private ImageView mBackdropView;
+    private TextView mTitleView;
+    private TextView mOverviewView;
+    private TextView mRatingView;
+    private TextView mReleaseDateView;
+
+
     public DetailsActivityFragment() {
         setHasOptionsMenu(true);
     }
@@ -71,15 +81,15 @@ public class DetailsActivityFragment extends Fragment implements LoaderManager.L
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_details, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_details, container, false);
 
-//        View rootView = inflater.inflate(R.layout.fragment_details, container, false);
-//        Intent intent = getActivity().getIntent();
-//        if (intent != null) {
-//            mMovieString = intent.getDataString();
-//            ((TextView) rootView.findViewById(R.id.detail_text)).setText(mMovieString);
-//        }
-//        return rootView;
+        mBackdropView = (ImageView) rootView.findViewById(R.id.detail_backdrop);
+        mTitleView = (TextView) rootView.findViewById(R.id.detail_title);
+        mOverviewView = (TextView) rootView.findViewById(R.id.detail_overview);
+        mRatingView = (TextView) rootView.findViewById(R.id.detail_rating);
+        mReleaseDateView = (TextView) rootView.findViewById(R.id.detail_release_date);
+
+        return rootView;
     }
 
     @Override
@@ -134,19 +144,36 @@ public class DetailsActivityFragment extends Fragment implements LoaderManager.L
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         Log.v(LOG_TAG, "In onLoadFinished");
-        if (!data.moveToFirst()) { return; }
+        if (!data.moveToFirst()) {
+            return;
+        }
 
         String title = data.getString(COL_MOVIE_TITLE);
+        mTitleView.setText(title);
         String overview = data.getString(COL_OVERVIEW);
+        mOverviewView.setText(overview);
         String releaseDate = data.getString(COL_RELEASE_DATE);
+        mReleaseDateView.setText(releaseDate);
         String voteAverage = Double.toString(data.getDouble(COL_VOTE_AVERAGE));
-        String posterPath = data.getString(COL_POSTER_PATH);
+        mRatingView.setText(voteAverage);
         String backdropPath = data.getString(COL_BACKDROP_PATH);
+        if (!backdropPath.equalsIgnoreCase("null")) {
+            Uri uri = new Uri.Builder()
+                    .scheme("http")
+                    .authority("image.tmdb.org")
+                    .appendPath("t")
+                    .appendPath("p")
+                    .appendPath("w500")
+                    .appendPath(backdropPath).build();
 
-        mMovieString = String.format("%s - %s - %s - %s - %s - %s", title, overview, releaseDate, voteAverage, posterPath, backdropPath);
+            Log.i(LOG_TAG, "Get View Called: " + uri.toString() + "; Title:" + title);
 
-        TextView detailTextView = (TextView)getView().findViewById(R.id.detail_text);
-        detailTextView.setText(mMovieString);
+            Picasso.with(getActivity()).load(uri.toString()).into(mBackdropView);
+        } else {
+            mBackdropView.setImageResource(R.drawable.blank);
+        }
+
+        mMovieString = String.format("Movie:%s; Rating:%s", title, voteAverage, backdropPath);
 
         // If onCreateOptionsMenu has already happened, we need to update the share intent now.
         if (mShareActionProvider != null) {
@@ -155,5 +182,6 @@ public class DetailsActivityFragment extends Fragment implements LoaderManager.L
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) { }
+    public void onLoaderReset(Loader<Cursor> loader) {
+    }
 }

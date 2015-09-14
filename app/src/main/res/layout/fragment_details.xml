@@ -1,16 +1,128 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gknayzeh.popularmovies.app.DetailsActivityFragment">
 
-    <TextView
-        android:id="@+id/detail_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/detail_backdrop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/blank" />
+
+        <LinearLayout
+            android:id="@+id/detail_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/detail_title_label"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingRight="2dp"
+                android:text="@string/movie_title_label"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detail_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Mad Max"
+                android:textSize="24sp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/detail_overview_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/detail_overview_label"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-light"
+                android:paddingRight="2dp"
+                android:text="@string/movie_overview_label"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/detail_overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Blah Blah Blah"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/detail_rating_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/detail_rating_label"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-light"
+                android:paddingRight="2dp"
+                android:text="@string/movie_rating_label"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detail_rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="16/17"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/detail_release_date_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/detail_release_date_label"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-light"
+                android:paddingRight="2dp"
+                android:text="@string/movie_release_date_label"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/detail_release_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="02/02/2015"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
